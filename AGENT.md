@@ -86,6 +86,13 @@ PORT=3000
 # Google Gemini API Key for AI Strategy Advisor
 GEMINI_API_KEY=your_gemini_api_key_here
 
+# App hosting URL
+APP_URL=http://localhost:3000
+
+# GitHub Integration (Automated Repo Management & Sync)
+GITHUB_USERNAME=ashleynandan
+GITHUB_TOKEN=your_github_personal_access_token_here
+
 # Optional: Disable Vite Hot Module Replacement in headless/agent environments
 # DISABLE_HMR=true
 ```
@@ -94,16 +101,51 @@ GEMINI_API_KEY=your_gemini_api_key_here
 
 ---
 
-## 📡 API Endpoints
+## 🐙 GitHub Integration & Remote Repository Sync
 
-The backend (`server.ts`) exposes the following endpoints:
+The agent is configured to manage the GitHub account and sync local changes directly to GitHub.
 
-| Method | Route | Description |
-|---|---|---|
-| `GET` | `/api/health` | Health check endpoint returning status and current timestamp. |
-| `GET` | `/api/blog-updates` | Returns curated Google Cloud blog updates, model news, and links. |
-| `POST` | `/api/signup` | Handles founder intake submissions for office hours and tailored startup advice. |
-| `POST` | `/api/advisor` | Proxies user queries to Gemini (`@google/genai`) to generate personalized AI architecture advice. |
+- **GitHub Account**: `ashleynandan`
+- **Authentication**: Personal Access Token (PAT) with `repo`, `admin:repo_hook`, `project`, `user` scopes stored in `.env`.
+
+### Common Sync Operations:
+
+1. **Create Remote Repository via GitHub API**:
+   ```bash
+   curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+     -H "Accept: application/vnd.github+json" \
+     https://api.github.com/user/repos \
+     -d '{"name":"<REPO_NAME>","private":true,"description":"Ashley Nandan | Google Cloud Startup Hub"}'
+   ```
+
+2. **Connect Remote and Push**:
+   ```bash
+   git remote add origin https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com/$GITHUB_USERNAME/<REPO_NAME>.git
+   git branch -M main
+   git push -u origin main
+   ```
+
+3. **Routine Sync / Push**:
+   ```bash
+   git add .
+   git commit -m "Your descriptive commit message"
+   git push origin main
+   ```
+
+---
+
+## 🧩 Components & Architecture Details
+
+- **[`src/App.tsx`](file:///usr/local/google/home/ashleynandan/Jetski/Github-Website/src/App.tsx)**: Main page layout wrapping Header, Sections, Footer, and AI Advisor modal.
+- **[`src/components/Header.tsx`](file:///usr/local/google/home/ashleynandan/Jetski/Github-Website/src/components/Header.tsx)**: Floating glassmorphism navbar with navigation anchors and AI Advisor launcher.
+- **[`src/components/SectionConnect.tsx`](file:///usr/local/google/home/ashleynandan/Jetski/Github-Website/src/components/SectionConnect.tsx)**: Hero section with Google Calendar booking links, LinkedIn profile connection, and founder office hours intake form.
+- **[`src/components/SectionGcpUpdates.tsx`](file:///usr/local/google/home/ashleynandan/Jetski/Github-Website/src/components/SectionGcpUpdates.tsx)**: Interactive 4-Tier Model Strategy Matrix (Frontier, Workhorse, Scale, Open Weights) and latest Google Cloud news feed.
+- **[`src/components/SectionCredits.tsx`](file:///usr/local/google/home/ashleynandan/Jetski/Github-Website/src/components/SectionCredits.tsx)**: Google for Startups Cloud Program credit tiers ($2k to $250k), application links, and 5-step preparation checklist.
+- **[`src/components/AiAdvisorModal.tsx`](file:///usr/local/google/home/ashleynandan/Jetski/Github-Website/src/components/AiAdvisorModal.tsx)**: Real-time Gemini AI strategy advisor modal querying the `/api/advisor` endpoint.
+- **[`src/components/Footer.tsx`](file:///usr/local/google/home/ashleynandan/Jetski/Github-Website/src/components/Footer.tsx)**: Clean footer with disclaimer, quick links, and copyright.
+- **[`src/data.ts`](file:///usr/local/google/home/ashleynandan/Jetski/Github-Website/src/data.ts)**: Static definitions for model matrix categories, blog posts, credit tiers, and calendar/external links.
+- **[`src/types.ts`](file:///usr/local/google/home/ashleynandan/Jetski/Github-Website/src/types.ts)**: TypeScript interfaces (`ModelCategory`, `BlogUpdate`, `SignupFormData`, `CreditTier`).
+- **[`server.ts`](file:///usr/local/google/home/ashleynandan/Jetski/Github-Website/server.ts)**: Node/Express backend serving `/api/health`, `/api/blog-updates`, `/api/signup`, `/api/advisor`, and integrating Vite middleware in development mode.
 
 ---
 
@@ -129,8 +171,9 @@ The backend (`server.ts`) exposes the following endpoints:
 ### General Agent Conventions:
 - Maintain documentation integrity: Preserve existing comments and docstrings unless explicitly requested to update them.
 - Format all file references with clickable markdown links (`file:///...`).
-- Record major architecture decisions, new routes, and significant feature additions into this file (`AGENT.md`).
+- Record major architecture decisions, new routes, and significant feature additions into this file (`AGENT.md` / `AGENTS.md`).
 
 ### Change & Instruction Log:
 - **2026-08-12**: Initialized repository workspace and established `AGENT.md` as the ongoing central documentation and instructions hub for the Google Cloud Startup Hub project.
 - **2026-08-12**: Configured GitHub authentication with `ashleynandan` account (PAT authenticated with full `repo` and admin scopes) for automated Git remote sync and GitHub API repository management.
+- **2026-08-12**: Documented component breakdown, GitHub workflow commands, and environment variables. Added symlink alias `AGENTS.md -> AGENT.md`.
