@@ -1,0 +1,6 @@
+{
+  "name": "Ashley Nandan | Google Cloud Startup Hub",
+  "description": "Modern, light, and airy founder hub with meeting schedules, Google Cloud AI model strategy matrix, live blog updates, and GCP Credits application checklist.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
