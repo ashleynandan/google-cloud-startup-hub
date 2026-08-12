@@ -133,3 +133,4 @@ The backend (`server.ts`) exposes the following endpoints:
 
 ### Change & Instruction Log:
 - **2026-08-12**: Initialized repository workspace and established `AGENT.md` as the ongoing central documentation and instructions hub for the Google Cloud Startup Hub project.
+- **2026-08-12**: Configured GitHub authentication with `ashleynandan` account (PAT authenticated with full `repo` and admin scopes) for automated Git remote sync and GitHub API repository management.
