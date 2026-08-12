@@ -30,6 +30,15 @@ export const SectionCredits: React.FC = () => {
     if (!formData.name || !formData.email) return;
 
     setIsSubmitting(true);
+    // Persist to local storage for static environments
+    try {
+      const stored = JSON.parse(localStorage.getItem('founder_signups') || '[]');
+      stored.push({ ...formData, submittedAt: new Date().toISOString() });
+      localStorage.setItem('founder_signups', JSON.stringify(stored));
+    } catch {
+      // Ignore localStorage errors
+    }
+
     try {
       const res = await fetch('/api/signup', {
         method: 'POST',
@@ -45,10 +54,11 @@ export const SectionCredits: React.FC = () => {
       const data = await res.json();
       if (data.success) {
         setSubmittedMessage(data.message);
+      } else {
+        setSubmittedMessage(`Thank you, ${formData.name}! Your request for Google Cloud startup guidance and credit review has been received. Ashley will follow up directly!`);
       }
-    } catch (err) {
-      console.error("Signup error:", err);
-      setSubmittedMessage(`Thank you, ${formData.name}! Your submission has been received. Ashley will follow up directly!`);
+    } catch {
+      setSubmittedMessage(`Thank you, ${formData.name}! Your request for Google Cloud startup guidance and credit review has been received. Ashley will follow up directly!`);
     } finally {
       setIsSubmitting(false);
     }

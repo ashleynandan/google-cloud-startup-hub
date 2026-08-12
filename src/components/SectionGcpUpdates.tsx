@@ -15,26 +15,25 @@ import {
   Store,
   Compass
 } from 'lucide-react';
-import { CONNECT_LINKS, MODEL_CATEGORIES } from '../data';
+import { CONNECT_LINKS, MODEL_CATEGORIES, INITIAL_BLOG_UPDATES } from '../data';
 import { BlogUpdate } from '../types';
 
 export const SectionGcpUpdates: React.FC = () => {
-  const [updates, setUpdates] = useState<BlogUpdate[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [updates, setUpdates] = useState<BlogUpdate[]>(INITIAL_BLOG_UPDATES);
+  const [loading, setLoading] = useState(false);
   const [activeUseCase, setActiveUseCase] = useState<'agents' | 'coding' | 'reasoning' | 'regulated'>('agents');
 
   useEffect(() => {
     fetch('/api/blog-updates')
       .then(res => res.json())
       .then(data => {
-        if (data && data.updates) {
+        if (data && data.updates && data.updates.length > 0) {
           setUpdates(data.updates);
         }
       })
-      .catch(err => {
-        console.error("Failed to fetch blog updates:", err);
-      })
-      .finally(() => setLoading(false));
+      .catch(() => {
+        // Static mode or offline: smoothly retain INITIAL_BLOG_UPDATES
+      });
   }, []);
 
   const getCategoryIcon = (iconName: string) => {
