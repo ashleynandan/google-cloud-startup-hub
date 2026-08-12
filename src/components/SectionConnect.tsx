@@ -2,11 +2,7 @@ import React from 'react';
 import { Calendar, Users, Linkedin, Sparkles, ArrowUpRight, ShieldCheck, Zap, TrendingUp, Building } from 'lucide-react';
 import { CONNECT_LINKS } from '../data';
 
-interface SectionConnectProps {
-  onOpenAdvisor: () => void;
-}
-
-export const SectionConnect: React.FC<SectionConnectProps> = ({ onOpenAdvisor }) => {
+export const SectionConnect: React.FC = () => {
   return (
     <section id="connect" className="pt-28 sm:pt-36 pb-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
       {/* Soft Ambient Hero Badge */}
@@ -58,7 +54,7 @@ export const SectionConnect: React.FC<SectionConnectProps> = ({ onOpenAdvisor })
             <div className="space-y-3 mb-6 text-xs text-slate-700">
               <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/70 border border-slate-200/60">
                 <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Google Cloud Startup Program Advisor</span>
+                <span>Google Cloud Startup Program Specialist</span>
               </div>
               <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/70 border border-slate-200/60">
                 <Zap className="w-4 h-4 text-sky-600 shrink-0" />
@@ -71,13 +67,16 @@ export const SectionConnect: React.FC<SectionConnectProps> = ({ onOpenAdvisor })
             </div>
           </div>
 
-          <button
-            onClick={onOpenAdvisor}
-            className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-2xl text-xs font-bold text-slate-800 bg-sky-100 hover:bg-sky-200/80 border border-sky-200 shadow-xs transition-all cursor-pointer"
+          <a
+            href={CONNECT_LINKS.meetAshley}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-2xl text-xs font-bold text-slate-900 bg-sky-200/90 hover:bg-sky-300 border border-sky-300 shadow-xs transition-all cursor-pointer"
           >
-            <Sparkles className="w-4 h-4 text-sky-600" />
-            <span>Interactive AI Strategy Advisor</span>
-          </button>
+            <Calendar className="w-4 h-4 text-sky-800" />
+            <span>Book Founder Office Hours</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-slate-700" />
+          </a>
         </div>
 
         {/* Right CTA Links Grid (7 Cols) */}

@@ -2,11 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, Sparkles, ExternalLink, Menu, X, ArrowUpRight } from 'lucide-react';
 import { CONNECT_LINKS } from '../data';
 
-interface HeaderProps {
-  onOpenAdvisor: () => void;
-}
-
-export const Header: React.FC<HeaderProps> = ({ onOpenAdvisor }) => {
+export const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -67,14 +63,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdvisor }) => {
 
           {/* Action CTAs */}
           <div className="hidden sm:flex items-center gap-2.5">
-            <button
-              onClick={onOpenAdvisor}
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-2xl text-xs font-semibold text-slate-700 bg-sky-100/70 hover:bg-sky-100 border border-sky-200/60 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-sky-600" />
-              <span>AI Advisor</span>
-            </button>
-
             <a
               href={CONNECT_LINKS.meetAshley}
               target="_blank"
@@ -121,17 +109,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdvisor }) => {
             >
               Credits & Checklist
             </a>
-            <div className="pt-2 flex flex-col gap-2">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenAdvisor();
-                }}
-                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-semibold text-slate-800 bg-sky-100 border border-sky-200"
-              >
-                <Sparkles className="w-4 h-4 text-sky-600" />
-                <span>Ask AI Advisor</span>
-              </button>
+            <div className="pt-2">
               <a
                 href={CONNECT_LINKS.meetAshley}
                 target="_blank"
