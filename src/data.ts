@@ -228,7 +228,8 @@ export const GOVERNANCE_RESOURCES = [
     badge: "AI Safety & Alignment",
     badgeBg: "bg-emerald-100 text-emerald-800 border-emerald-200",
     icon: "ShieldCheck",
-    description: "Configure granular safety filters (Hate Speech, Harassment, Sexual Content, Dangerous Content) and threshold configurations to keep your AI agents safe and enterprise-compliant.",
+    keyHighlights: ["4 Harm Categories (Hate, Harassment, Sexual, Dangerous)", "Thresholds: BLOCK_NONE to BLOCK_LOW_AND_ABOVE", "Enterprise Safety Settings in Gemini API"],
+    description: "Configure granular safety filters and probability thresholds to ensure production AI agents adhere to brand safety, trust, and enterprise compliance standards.",
     link: CONNECT_LINKS.safetyFilters,
     ctaText: "Configure Safety Settings"
   },
@@ -238,7 +239,8 @@ export const GOVERNANCE_RESOURCES = [
     badge: "Spend Governance",
     badgeBg: "bg-sky-100 text-sky-800 border-sky-200",
     icon: "DollarSign",
-    description: "Set up automated Google Cloud Billing budget alerts at 50%, 90%, and 100% threshold targets with Pub/Sub or email notifications to protect startup runway and prevent runaway inference costs.",
+    keyHighlights: ["Automated 50%, 90%, 100% threshold rules", "Email & Pub/Sub programmatic webhooks", "Cap runaway API & inference costs"],
+    description: "Set up Google Cloud Billing automated budget alerts with customizable warning tiers and Pub/Sub notifications to protect startup runway and prevent runaway spend.",
     link: CONNECT_LINKS.budgetAlerts,
     ctaText: "Set Up Budget Alerts"
   },
@@ -248,8 +250,75 @@ export const GOVERNANCE_RESOURCES = [
     badge: "Next Key Date: Oct 20, 2026",
     badgeBg: "bg-rose-100 text-rose-800 border-rose-200 font-extrabold",
     icon: "CalendarClock",
-    description: "Track official Gemini model deprecation and sunset schedules. Plan zero-downtime model migrations to Gemini 3.5 Flash and Flash-Lite well ahead of the October 20, 2026 milestone.",
+    keyHighlights: ["Key Sunset Deadline: October 20, 2026", "Migration to Gemini 3.5 Flash & Flash-Lite", "Zero-downtime endpoint transitions"],
+    description: "Track official Gemini model deprecation timelines. Plan seamless zero-downtime migrations from legacy endpoints to Gemini 3.5 ahead of the October 20, 2026 milestone.",
     link: CONNECT_LINKS.modelDeprecations,
     ctaText: "View Deprecation Schedule"
+  }
+];
+
+export const MODEL_FEATURE_COMPARISON_TABLE = [
+  {
+    feature: "Launch Stage",
+    flashLite: "GA (Generally Available)",
+    flash: "GA (Generally Available)",
+    pro: "GA & Preview (3.1)",
+    gemma: "GA (Open Weights)"
+  },
+  {
+    feature: "Input Modalities",
+    flashLite: "Text, Code, Audio, Images, Video, PDF",
+    flash: "Text, Code, Audio, Images, Video, PDF",
+    pro: "Text, Code, Audio, Images, Video, PDF",
+    gemma: "Text & Multimodal Vision"
+  },
+  {
+    feature: "Context Window",
+    flashLite: "1,048,576 tokens (~1M)",
+    flash: "1,048,576 tokens (~1M)",
+    pro: "1,048,576+ tokens (~1M-2M)",
+    gemma: "8,192 - 32,768+ tokens"
+  },
+  {
+    feature: "Max Output Tokens",
+    flashLite: "65,536 tokens",
+    flash: "65,536 tokens",
+    pro: "65,536 tokens",
+    gemma: "Configurable / Custom"
+  },
+  {
+    feature: "Grounding with Google Search",
+    flashLite: "Supported",
+    flash: "Supported",
+    pro: "Supported",
+    gemma: "Via Vertex AI / RAG"
+  },
+  {
+    feature: "Function Calling & JSON Mode",
+    flashLite: "Optimized / High Speed",
+    flash: "Native / High Accuracy",
+    pro: "Advanced / Multi-Turn",
+    gemma: "Supported via Tuning"
+  },
+  {
+    feature: "Code Execution",
+    flashLite: "Supported",
+    flash: "Supported",
+    pro: "Supported",
+    gemma: "Self-Hosted Sandbox"
+  },
+  {
+    feature: "Context Caching",
+    flashLite: "Supported",
+    flash: "Supported",
+    pro: "Supported",
+    gemma: "KV Cache / Self-Managed"
+  },
+  {
+    feature: "Throughput Latency Tier",
+    flashLite: "Ultra-Low (<200ms TTFT)",
+    flash: "Low Latency (Fast)",
+    pro: "Deep Thinking / Precision",
+    gemma: "GPU & Cluster Dependent"
   }
 ];

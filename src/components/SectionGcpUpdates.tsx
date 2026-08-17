@@ -23,13 +23,14 @@ import {
   AlertCircle,
   TableProperties
 } from 'lucide-react';
-import { CONNECT_LINKS, MODEL_CATEGORIES, INITIAL_BLOG_UPDATES, MODEL_STRENGTHS_MATRIX, GOVERNANCE_RESOURCES } from '../data';
+import { CONNECT_LINKS, MODEL_CATEGORIES, INITIAL_BLOG_UPDATES, MODEL_STRENGTHS_MATRIX, GOVERNANCE_RESOURCES, MODEL_FEATURE_COMPARISON_TABLE } from '../data';
 import { BlogUpdate } from '../types';
 
 export const SectionGcpUpdates: React.FC = () => {
   const [updates, setUpdates] = useState<BlogUpdate[]>(INITIAL_BLOG_UPDATES);
   const [loading, setLoading] = useState(false);
   const [activeUseCase, setActiveUseCase] = useState<'agents' | 'coding' | 'reasoning' | 'regulated'>('agents');
+  const [matrixViewMode, setMatrixViewMode] = useState<'cards' | 'table'>('cards');
 
   useEffect(() => {
     fetch('/api/blog-updates')
@@ -346,65 +347,121 @@ export const SectionGcpUpdates: React.FC = () => {
             </p>
           </div>
 
-          <a 
-            href={CONNECT_LINKS.modelStrengthsMigrate}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shrink-0 px-4 py-2.5 rounded-2xl text-xs font-bold text-sky-900 bg-sky-100/90 hover:bg-sky-200 border border-sky-300/80 shadow-xs flex items-center gap-1.5 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
-          >
-            <span>Official Migration Guide</span>
-            <ExternalLink className="w-3.5 h-3.5 text-sky-700" />
-          </a>
-        </div>
-
-        {/* Visual Comparison Matrix Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
-          {MODEL_STRENGTHS_MATRIX.map((model, idx) => (
-            <div 
-              key={idx} 
-              className="bg-white/95 rounded-[24px] p-6 border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
-            >
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="font-heading font-bold text-lg text-slate-900 group-hover:text-sky-700 transition-colors">
-                    {model.name}
-                  </span>
-                  <span className={`text-[11px] font-bold px-3 py-1 rounded-full border ${model.badgeBg}`}>
-                    {model.badge}
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-2 gap-2 mb-4 p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs">
-                  <div>
-                    <span className="text-[10px] uppercase font-bold text-slate-400 block">Context Window</span>
-                    <span className="font-semibold text-slate-800">{model.contextWindow}</span>
-                  </div>
-                  <div>
-                    <span className="text-[10px] uppercase font-bold text-slate-400 block">Output Token Limit</span>
-                    <span className="font-semibold text-slate-800">{model.outputLimit}</span>
-                  </div>
-                </div>
-
-                <div className="space-y-2 mb-4">
-                  <span className="text-[10px] uppercase font-bold text-slate-400 block">Core Strengths</span>
-                  {model.strengths.map((str, i) => (
-                    <div key={i} className="flex items-start gap-2 text-xs text-slate-700">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                      <span>{str}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="pt-3 border-t border-slate-100">
-                <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">Optimal Use Case</span>
-                <p className="text-xs text-slate-600 font-medium">
-                  {model.bestFor}
-                </p>
-              </div>
+          <div className="flex items-center gap-3 self-stretch sm:self-auto justify-between sm:justify-end">
+            {/* View Mode Toggle */}
+            <div className="bg-slate-100 p-1 rounded-xl flex items-center gap-1 border border-slate-200/80">
+              <button
+                onClick={() => setMatrixViewMode('cards')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  matrixViewMode === 'cards'
+                    ? 'bg-white text-slate-900 shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                Card View
+              </button>
+              <button
+                onClick={() => setMatrixViewMode('table')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  matrixViewMode === 'table'
+                    ? 'bg-white text-slate-900 shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                Full Spec Table
+              </button>
             </div>
-          ))}
+
+            <a 
+              href={CONNECT_LINKS.modelStrengthsMigrate}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 px-4 py-2 rounded-xl text-xs font-bold text-sky-900 bg-sky-100/90 hover:bg-sky-200 border border-sky-300/80 shadow-xs flex items-center gap-1.5 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+            >
+              <span>Official Docs</span>
+              <ExternalLink className="w-3.5 h-3.5 text-sky-700" />
+            </a>
+          </div>
         </div>
+
+        {/* View Mode 1: Cards */}
+        {matrixViewMode === 'cards' && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+            {MODEL_STRENGTHS_MATRIX.map((model, idx) => (
+              <div 
+                key={idx} 
+                className="bg-white/95 rounded-[24px] p-6 border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="font-heading font-bold text-lg text-slate-900 group-hover:text-sky-700 transition-colors">
+                      {model.name}
+                    </span>
+                    <span className={`text-[11px] font-bold px-3 py-1 rounded-full border ${model.badgeBg}`}>
+                      {model.badge}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2 mb-4 p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs">
+                    <div>
+                      <span className="text-[10px] uppercase font-bold text-slate-400 block">Context Window</span>
+                      <span className="font-semibold text-slate-800">{model.contextWindow}</span>
+                    </div>
+                    <div>
+                      <span className="text-[10px] uppercase font-bold text-slate-400 block">Output Token Limit</span>
+                      <span className="font-semibold text-slate-800">{model.outputLimit}</span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 mb-4">
+                    <span className="text-[10px] uppercase font-bold text-slate-400 block">Core Strengths</span>
+                    {model.strengths.map((str, i) => (
+                      <div key={i} className="flex items-start gap-2 text-xs text-slate-700">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                        <span>{str}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-3 border-t border-slate-100">
+                  <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">Optimal Use Case</span>
+                  <p className="text-xs text-slate-600 font-medium">
+                    {model.bestFor}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* View Mode 2: Full Spec Table */}
+        {matrixViewMode === 'table' && (
+          <div className="overflow-x-auto rounded-2xl border border-slate-200/90 shadow-xs mb-6 bg-white">
+            <table className="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr className="bg-sky-50/90 text-slate-800 border-b border-slate-200">
+                  <th className="p-4 font-bold uppercase text-[11px] tracking-wider">Feature / Capability</th>
+                  <th className="p-4 font-bold text-sky-900">Gemini 3.5 Flash-Lite</th>
+                  <th className="p-4 font-bold text-amber-900">Gemini 3.5 Flash</th>
+                  <th className="p-4 font-bold text-emerald-900">Gemini 3.1 / 2.5 Pro</th>
+                  <th className="p-4 font-bold text-lime-900">Gemma 2 / 3</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100 text-slate-700">
+                {MODEL_FEATURE_COMPARISON_TABLE.map((row, idx) => (
+                  <tr key={idx} className={idx % 2 === 0 ? 'bg-white hover:bg-slate-50/80' : 'bg-slate-50/50 hover:bg-slate-50'}>
+                    <td className="p-4 font-bold text-slate-900">{row.feature}</td>
+                    <td className="p-4 font-medium">{row.flashLite}</td>
+                    <td className="p-4 font-medium">{row.flash}</td>
+                    <td className="p-4 font-medium">{row.pro}</td>
+                    <td className="p-4 font-medium">{row.gemma}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
 
         {/* Footnote with link */}
         <div className="p-4 rounded-2xl bg-sky-50/80 border border-sky-200/70 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-700">
@@ -458,9 +515,20 @@ export const SectionGcpUpdates: React.FC = () => {
                   {resource.title}
                 </h4>
 
-                <p className="text-xs text-slate-600 leading-relaxed mb-6">
+                <p className="text-xs text-slate-600 leading-relaxed mb-4">
                   {resource.description}
                 </p>
+
+                {resource.keyHighlights && (
+                  <div className="space-y-1.5 mb-6 pt-3 border-t border-slate-100">
+                    {resource.keyHighlights.map((hl, i) => (
+                      <div key={i} className="flex items-start gap-1.5 text-[11px] text-slate-700 font-medium">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-sky-600 shrink-0 mt-0.5" />
+                        <span>{hl}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <a
