@@ -7,7 +7,11 @@ export const CONNECT_LINKS = {
   gcpBlog: "https://cloud.google.com/blog/topics/inside-google-cloud/whats-new-google-cloud?e=48754805",
   marketplaceDocs: "https://docs.cloud.google.com/marketplace/docs/partners/ai-agents",
   applyCredits: "https://cloud.google.com/startup/apply?hl=en&e=48754805",
-  pdfBestPractices: "https://services.google.com/fh/files/misc/gfscloudprogram_bestpractices.pdf"
+  pdfBestPractices: "https://services.google.com/fh/files/misc/gfscloudprogram_bestpractices.pdf",
+  modelStrengthsMigrate: "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/migrate#which-model",
+  safetyFilters: "https://ai.google.dev/gemini-api/docs/safety-settings#safety-filters",
+  budgetAlerts: "https://docs.cloud.google.com/billing/docs/how-to/budgets#add-new-budget",
+  modelDeprecations: "https://ai.google.dev/gemini-api/docs/deprecations"
 };
 
 export const MODEL_CATEGORIES: ModelCategory[] = [
@@ -147,5 +151,105 @@ export const CREDIT_TIERS: CreditTier[] = [
     maxCredits: "Up to $250,000",
     description: "For venture-backed startups looking to scale production infrastructure & AI pipelines on Google Cloud.",
     perks: ["100% covered year 1 cloud spend", "Dedicated Startup Success Manager", "24/7 Technical Support Credits", "Marketplace Co-Selling Opportunities"]
+  }
+];
+
+export const MODEL_STRENGTHS_MATRIX = [
+  {
+    name: "Gemini 3.5 Flash-Lite",
+    category: "Scale",
+    badge: "Ultra-Fast & Cost-Optimized",
+    badgeBg: "bg-sky-100 text-sky-800 border-sky-200",
+    contextWindow: "1,048,576 tokens",
+    outputLimit: "65,536 tokens",
+    strengths: [
+      "High-throughput sub-second response times",
+      "Cost-optimized for massive prompt volume & scale",
+      "Native function calling & structured JSON parsing",
+      "Multimodal (Text, Code, Audio, Images, Video)"
+    ],
+    bestFor: "High-volume AI agents, routine classification, real-time data transformation",
+    link: CONNECT_LINKS.modelStrengthsMigrate
+  },
+  {
+    name: "Gemini 3.5 Flash / 3.7 Flash",
+    category: "Workhorse",
+    badge: "Balanced Speed & Coding",
+    badgeBg: "bg-amber-100 text-amber-800 border-amber-200",
+    contextWindow: "1,048,576 tokens",
+    outputLimit: "65,536 tokens",
+    strengths: [
+      "State-of-the-art code generation and UI layout synthesis",
+      "Strong multi-step logical reasoning & debugging",
+      "Grounding with Google Search & implicit context caching",
+      "High token-per-second streaming throughput"
+    ],
+    bestFor: "Developer copilots, full-stack software synthesis, interactive chatbots, multimodal analysis",
+    link: CONNECT_LINKS.modelStrengthsMigrate
+  },
+  {
+    name: "Gemini 3.1 Pro / 2.5 Pro",
+    category: "Frontier",
+    badge: "Maximum Intellect & Reasoning",
+    badgeBg: "bg-emerald-100 text-emerald-800 border-emerald-200",
+    contextWindow: "1,048,576+ tokens",
+    outputLimit: "65,536 tokens",
+    strengths: [
+      "Deep multi-document legal & financial synthesis",
+      "Complex mathematical, scientific, and strategic reasoning",
+      "Advanced compliance auditing & rigorous logic verification",
+      "High-fidelity multi-turn tool orchestration"
+    ],
+    bestFor: "Enterprise strategic intelligence, compliance diligence, complex contract auditing",
+    link: CONNECT_LINKS.modelStrengthsMigrate
+  },
+  {
+    name: "Gemma 2 / Gemma 3",
+    category: "Open Weights",
+    badge: "Sovereignty & Self-Hosted",
+    badgeBg: "bg-lime-100 text-lime-800 border-lime-200",
+    contextWindow: "8k - 32k+ tokens",
+    outputLimit: "Configurable",
+    strengths: [
+      "Deploy anywhere (Vertex AI, GKE, on-prem, local edge)",
+      "Zero data egress & strict data residency compliance",
+      "Custom LoRA fine-tuning & domain adaptation",
+      "Lightweight resource footprint"
+    ],
+    bestFor: "Regulated industries (healthcare, defense, fintech), sovereign AI infrastructure",
+    link: CONNECT_LINKS.applyCredits
+  }
+];
+
+export const GOVERNANCE_RESOURCES = [
+  {
+    id: "safeguards",
+    title: "Built-in Safeguards & Safety Filters",
+    badge: "AI Safety & Alignment",
+    badgeBg: "bg-emerald-100 text-emerald-800 border-emerald-200",
+    icon: "ShieldCheck",
+    description: "Configure granular safety filters (Hate Speech, Harassment, Sexual Content, Dangerous Content) and threshold configurations to keep your AI agents safe and enterprise-compliant.",
+    link: CONNECT_LINKS.safetyFilters,
+    ctaText: "Configure Safety Settings"
+  },
+  {
+    id: "budgets",
+    title: "Cloud Budget Alerts & Cost Controls",
+    badge: "Spend Governance",
+    badgeBg: "bg-sky-100 text-sky-800 border-sky-200",
+    icon: "DollarSign",
+    description: "Set up automated Google Cloud Billing budget alerts at 50%, 90%, and 100% threshold targets with Pub/Sub or email notifications to protect startup runway and prevent runaway inference costs.",
+    link: CONNECT_LINKS.budgetAlerts,
+    ctaText: "Set Up Budget Alerts"
+  },
+  {
+    id: "deprecations",
+    title: "Model Deprecation Dates & Lifecycle",
+    badge: "Next Key Date: Oct 20, 2026",
+    badgeBg: "bg-rose-100 text-rose-800 border-rose-200 font-extrabold",
+    icon: "CalendarClock",
+    description: "Track official Gemini model deprecation and sunset schedules. Plan zero-downtime model migrations to Gemini 3.5 Flash and Flash-Lite well ahead of the October 20, 2026 milestone.",
+    link: CONNECT_LINKS.modelDeprecations,
+    ctaText: "View Deprecation Schedule"
   }
 ];

@@ -13,9 +13,17 @@ import {
   TrendingUp, 
   BookOpen,
   Store,
-  Compass
+  Compass,
+  ShieldCheck,
+  DollarSign,
+  CalendarClock,
+  ArrowUpRight,
+  Sliders,
+  BellRing,
+  AlertCircle,
+  TableProperties
 } from 'lucide-react';
-import { CONNECT_LINKS, MODEL_CATEGORIES, INITIAL_BLOG_UPDATES } from '../data';
+import { CONNECT_LINKS, MODEL_CATEGORIES, INITIAL_BLOG_UPDATES, MODEL_STRENGTHS_MATRIX, GOVERNANCE_RESOURCES } from '../data';
 import { BlogUpdate } from '../types';
 
 export const SectionGcpUpdates: React.FC = () => {
@@ -46,6 +54,15 @@ export const SectionGcpUpdates: React.FC = () => {
     }
   };
 
+  const getGovernanceIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'ShieldCheck': return <ShieldCheck className="w-6 h-6 text-emerald-600" />;
+      case 'DollarSign': return <DollarSign className="w-6 h-6 text-sky-600" />;
+      case 'CalendarClock': return <CalendarClock className="w-6 h-6 text-rose-600" />;
+      default: return <AlertCircle className="w-6 h-6 text-sky-600" />;
+    }
+  };
+
   return (
     <section id="updates" className="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
       {/* Section Header Badge */}
@@ -69,7 +86,7 @@ export const SectionGcpUpdates: React.FC = () => {
         </p>
       </div>
 
-      {/* 4 Model Categories Matrix Cards (Matching Prompt Image System) */}
+      {/* 4 Model Categories Matrix Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
         {MODEL_CATEGORIES.map((category) => (
           <div 
@@ -310,6 +327,153 @@ export const SectionGcpUpdates: React.FC = () => {
               </a>
             </div>
           )}
+        </div>
+      </div>
+
+      {/* NEW: Gemini Models & Key Strengths Architecture Matrix Chart */}
+      <div className="glass-card rounded-[32px] p-6 sm:p-10 mb-12 border-2 border-sky-200/90 bg-gradient-to-br from-white via-sky-50/40 to-white shadow-lg relative overflow-hidden">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
+          <div>
+            <div className="flex items-center gap-2 text-xs font-bold text-sky-700 uppercase tracking-wider">
+              <TableProperties className="w-4 h-4 text-sky-600" />
+              <span>Official Architecture Matrix</span>
+            </div>
+            <h3 className="font-heading text-2xl sm:text-3xl font-bold text-slate-800 mt-1">
+              Gemini Models & Their Key Strengths
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-2xl">
+              Compare token capacities, throughput latency, and architectural strengths across Google DeepMind's flagship Gemini and Gemma models.
+            </p>
+          </div>
+
+          <a 
+            href={CONNECT_LINKS.modelStrengthsMigrate}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 px-4 py-2.5 rounded-2xl text-xs font-bold text-sky-900 bg-sky-100/90 hover:bg-sky-200 border border-sky-300/80 shadow-xs flex items-center gap-1.5 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <span>Official Migration Guide</span>
+            <ExternalLink className="w-3.5 h-3.5 text-sky-700" />
+          </a>
+        </div>
+
+        {/* Visual Comparison Matrix Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+          {MODEL_STRENGTHS_MATRIX.map((model, idx) => (
+            <div 
+              key={idx} 
+              className="bg-white/95 rounded-[24px] p-6 border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="font-heading font-bold text-lg text-slate-900 group-hover:text-sky-700 transition-colors">
+                    {model.name}
+                  </span>
+                  <span className={`text-[11px] font-bold px-3 py-1 rounded-full border ${model.badgeBg}`}>
+                    {model.badge}
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 mb-4 p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs">
+                  <div>
+                    <span className="text-[10px] uppercase font-bold text-slate-400 block">Context Window</span>
+                    <span className="font-semibold text-slate-800">{model.contextWindow}</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] uppercase font-bold text-slate-400 block">Output Token Limit</span>
+                    <span className="font-semibold text-slate-800">{model.outputLimit}</span>
+                  </div>
+                </div>
+
+                <div className="space-y-2 mb-4">
+                  <span className="text-[10px] uppercase font-bold text-slate-400 block">Core Strengths</span>
+                  {model.strengths.map((str, i) => (
+                    <div key={i} className="flex items-start gap-2 text-xs text-slate-700">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                      <span>{str}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pt-3 border-t border-slate-100">
+                <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">Optimal Use Case</span>
+                <p className="text-xs text-slate-600 font-medium">
+                  {model.bestFor}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Footnote with link */}
+        <div className="p-4 rounded-2xl bg-sky-50/80 border border-sky-200/70 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-700">
+          <div className="flex items-center gap-2">
+            <Zap className="w-4 h-4 text-sky-600 shrink-0" />
+            <span>Need assistance selecting the right model or migrating existing prompts?</span>
+          </div>
+          <a
+            href={CONNECT_LINKS.meetAshley}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-sky-800 hover:text-sky-950 flex items-center gap-1 shrink-0"
+          >
+            <span>Review with Ashley</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </a>
+        </div>
+      </div>
+
+      {/* NEW: Developer Safety, Budget Alerts & Deprecation Schedule Bento Grid */}
+      <div className="mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-8">
+          <span className="text-xs font-bold tracking-wider text-sky-700 uppercase block mb-1">
+            Production Readiness & Governance
+          </span>
+          <h3 className="font-heading text-2xl sm:text-3xl font-bold text-slate-800">
+            Safety Guardrails, Cost Controls & Lifecycle
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-600 mt-1">
+            Key operational resources for founders and engineering teams deploying production AI agents.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {GOVERNANCE_RESOURCES.map((resource) => (
+            <div 
+              key={resource.id}
+              className="glass-card glass-card-hover rounded-[24px] p-6 flex flex-col justify-between border border-slate-200/80 group"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200/80 flex items-center justify-center shadow-xs">
+                    {getGovernanceIcon(resource.icon)}
+                  </div>
+                  <span className={`text-[10px] font-bold px-3 py-1 rounded-full border ${resource.badgeBg}`}>
+                    {resource.badge}
+                  </span>
+                </div>
+
+                <h4 className="font-heading text-lg font-bold text-slate-800 group-hover:text-sky-700 transition-colors mb-2">
+                  {resource.title}
+                </h4>
+
+                <p className="text-xs text-slate-600 leading-relaxed mb-6">
+                  {resource.description}
+                </p>
+              </div>
+
+              <a
+                href={resource.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-slate-800 bg-white hover:bg-slate-50 border border-slate-200/80 shadow-2xs flex items-center justify-between transition-all group-hover:border-sky-300 cursor-pointer"
+              >
+                <span>{resource.ctaText}</span>
+                <ArrowUpRight className="w-4 h-4 text-slate-500 group-hover:text-sky-600 transition-colors" />
+              </a>
+            </div>
+          ))}
         </div>
       </div>
 
