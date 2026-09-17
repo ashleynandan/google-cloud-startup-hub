@@ -733,22 +733,6 @@ export const SectionGcpUpdates: React.FC = () => {
         </div>
       </div>
 
-      {/* View Google Cloud Latest Updates Link */}
-      <div className="mb-12 flex justify-center">
-        <a 
-          href={CONNECT_LINKS.gcpBlog} 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-sky-600 via-sky-500 to-blue-600 hover:from-sky-500 hover:to-blue-500 text-white font-bold text-sm sm:text-base shadow-lg shadow-sky-500/25 hover:shadow-xl hover:shadow-sky-500/35 hover:scale-[1.02] active:scale-[0.98] transition-all group border border-sky-400/30 cursor-pointer"
-        >
-          <div className="w-8 h-8 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center shrink-0">
-            <TrendingUp className="w-4.5 h-4.5 text-white" />
-          </div>
-          <span>View Google Cloud Latest Updates</span>
-          <ExternalLink className="w-4 h-4 text-sky-100 group-hover:translate-x-0.5 transition-transform ml-0.5" />
-        </a>
-      </div>
-
       {/* Featured Banner: Onboard Your Agent to Google Cloud Marketplace */}
       <div className="glass-card rounded-[28px] p-6 sm:p-8 border border-sky-200/90 bg-gradient-to-r from-sky-100/70 via-white to-sky-50 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-4">

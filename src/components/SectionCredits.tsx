@@ -84,37 +84,9 @@ export const SectionCredits: React.FC = () => {
         </p>
       </div>
 
-      {/* Primary Action Buttons Bar */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-12">
-        {/* Button 1: Apply for Google Cloud Credits */}
-        <a
-          href={CONNECT_LINKS.applyCredits}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="glass-card glass-card-hover rounded-[28px] p-6 sm:p-7 flex items-center justify-between border-2 border-sky-300 bg-gradient-to-r from-sky-100/80 via-white to-sky-50/80 shadow-md group cursor-pointer"
-        >
-          <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-sky-500 text-white flex items-center justify-center shrink-0 shadow-md shadow-sky-200 group-hover:scale-105 transition-transform">
-              <DollarSign className="w-8 h-8" />
-            </div>
-            <div>
-              <span className="text-[10px] font-extrabold uppercase tracking-wider text-sky-800 bg-sky-200/80 px-2.5 py-0.5 rounded-full">
-                Official Portal
-              </span>
-              <h3 className="font-heading text-xl font-bold text-slate-800 group-hover:text-sky-700 transition-colors mt-1">
-                Apply for Google Cloud Credits
-              </h3>
-              <p className="text-xs text-slate-600 mt-0.5">
-                Submit your startup application directly to the Google Cloud program.
-              </p>
-            </div>
-          </div>
-          <div className="w-10 h-10 rounded-2xl bg-white border border-sky-200 flex items-center justify-center text-sky-700 group-hover:bg-sky-50 group-hover:scale-110 transition-all shrink-0 ml-2">
-            <ArrowUpRight className="w-5 h-5" />
-          </div>
-        </a>
-
-        {/* Button 2: Read 5 Easy Steps PDF */}
+      {/* Primary Action Button Bar */}
+      <div className="max-w-xl mx-auto mb-12">
+        {/* Read 5 Easy Steps PDF */}
         <a
           href={CONNECT_LINKS.pdfBestPractices}
           target="_blank"
@@ -189,12 +161,8 @@ export const SectionCredits: React.FC = () => {
       {/* Playful, Low-Friction Interactive Signup Form */}
       <div className="glass-card rounded-[32px] p-6 sm:p-10 border border-sky-200/90 bg-gradient-to-br from-white via-sky-50/60 to-slate-50 shadow-lg max-w-3xl mx-auto">
         <div className="text-center mb-8">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-100 text-sky-900 text-xs font-bold uppercase tracking-wider mb-2">
-            <Sparkles className="w-3.5 h-3.5 text-sky-600" />
-            Founder & Investor Onboarding
-          </span>
           <h3 className="font-heading text-2xl sm:text-3xl font-bold text-slate-800">
-            Request Ashley’s Startup Guidance & Credit Package Review
+            Book time to discuss
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 mt-2 max-w-xl mx-auto">
             Fill out this quick form for credit application tips, architecture recommendations, or VC partner support directly from Ashley Nandan.

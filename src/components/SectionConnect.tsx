@@ -4,7 +4,7 @@ import { CONNECT_LINKS } from '../data';
 
 export const SectionConnect: React.FC = () => {
   return (
-    <section id="connect" className="pt-28 sm:pt-36 pb-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <section id="connect" className="pt-32 sm:pt-40 pb-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
       {/* Soft Ambient Hero Badge */}
       <div className="flex justify-center mb-6">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill border border-white/90 shadow-xs text-xs font-semibold text-slate-700">
