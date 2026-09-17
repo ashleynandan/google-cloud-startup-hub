@@ -39,13 +39,13 @@ app.get("/api/blog-updates", (_req, res) => {
     updates: [
       {
         id: "1",
-        title: "Introducing Gemini 3.5 & Flash-Lite Scale Category",
-        date: "August 2026",
-        tag: "AI & ML",
+        title: "Gemini 3.8 Flash: Near-Frontier Intelligence at $0.75 / 1M Input Tokens",
+        date: "September 2026",
+        tag: "AI & ML Pricing",
         readTime: "3 min read",
-        summary: "Discover how Google DeepMind's simplified 4-category model matrix (Frontier, Workhorse, Scale, Open Weights) helps founders choose the exact right model for scale, efficiency, and complex reasoning.",
+        summary: "Gemini 3.8 Flash delivers near-frontier coding and multi-step reasoning at $0.75/1M input and $3.75/1M output introductory pricing (through Dec 31, 2026), with 50% off via Off-Peak PayGo.",
         link: "https://cloud.google.com/blog/topics/inside-google-cloud/whats-new-google-cloud?e=48754805",
-        badge: "Featured Strategy"
+        badge: "New Launch"
       },
       {
         id: "2",
@@ -112,9 +112,9 @@ app.post("/api/advisor", async (req, res) => {
       res.json({
         answer: `Great question! When considering ${techStack || 'your AI startup architecture'}, our Google Cloud engineering recommendation is:
         
-1. **Start high-volume or agentic background tasks** with the **Gemini 3.5 Flash-Lite ('Scale')** model for maximum throughput and cost efficiency.
-2. **Dynamically funnel** to **Gemini 3.5 Flash ('Workhorse')** when advanced reasoning, complex layout generation, or heavy coding is required.
-3. For top-tier strategic reasoning or compliance roles, step up to **Gemini Pro ('Frontier')**.
+1. **Start high-volume or agentic background tasks** with the **Gemini 3.5 Flash-Lite ('Scale')** model ($0.30/1M input) for maximum throughput and cost efficiency.
+2. **Dynamically funnel** to **Gemini 3.8 Flash ('Workhorse')** ($0.75/1M input · $3.75/1M output introductory pricing) when near-frontier coding, multi-step reasoning, or agentic video understanding is required.
+3. For maximum strategic reasoning or compliance roles, step up to **Gemini 3.1 Pro ('Frontier')** ($2.00/1M input), or deploy **Gemma 3 ('Open Weights')** for strict data sovereignty.
 
 To discuss this tailored to your ${stage || 'startup'} architecture, book a slot with Ashley Nandan directly!`,
         source: "Rule-based Startup Framework"
@@ -125,11 +125,11 @@ To discuss this tailored to your ${stage || 'startup'} architecture, book a slot
     const prompt = `You are an AI advisor for Ashley Nandan, a Google Cloud Startup Specialist assisting startup founders, CEOs, and CTOs.
     
 Context about Google Cloud Model Strategy:
-- Frontier Models (e.g. Gemini Pro 3.X): High intelligence for complex reasoning, strategy, compliance.
-- Workhorse Models (e.g. Gemini Flash): Balanced speed & reasoning for general development and logistics.
-- Scale Models (e.g. Gemini Flash-Lite): High-throughput automation for mass-scaling foundational agent tasks.
-- Open Weights Models (e.g. Gemma): For controlled innovation in regulated industries.
-Engineering Recommendation: Start high-volume tasks with Gemini Flash-Lite ('Scale') model, and dynamically funnel to Gemini Flash ('Workhorse') when advanced capabilities (complex coding, layouts) are required.
+- Frontier Models (e.g. Gemini 3.1 Pro): High intelligence for complex reasoning, strategy, compliance ($2.00/1M input, $12.00/1M output).
+- Workhorse Models (e.g. Gemini 3.8 Flash): Near-frontier coding & reasoning at workhorse speed ($0.75/1M input, $3.75/1M output introductory pricing; $0.375/$1.875 Off-Peak PayGo).
+- Scale Models (e.g. Gemini 3.5 Flash-Lite): High-throughput automation for mass-scaling foundational agent tasks ($0.30/1M input, $2.50/1M output).
+- Open Weights Models (e.g. Gemma 3 / Gemma 2): For controlled innovation & sovereignty in regulated industries.
+Engineering Recommendation: Start high-volume tasks with Gemini 3.5 Flash-Lite ('Scale') model, and dynamically funnel to Gemini 3.8 Flash ('Workhorse') when advanced capabilities (complex coding, multi-step reasoning, layouts) are required.
 Google Cloud Credits: Up to $200k for eligible startups.
 
 User Startup Stage: ${stage || 'Not specified'}

@@ -33,8 +33,8 @@ export const MODEL_CATEGORIES: ModelCategory[] = [
     id: "workhorse",
     name: "Workhorse",
     subtitle: "Balanced Performance & Speed",
-    description: "Focused on efficient general intelligence, balancing speed and reasoning for developers and logistics roles.",
-    examples: ["Gemini Flash", "Sonnet"],
+    description: "Focused on efficient general intelligence, balancing near-frontier reasoning and speed at breakthrough workhorse economics ($0.75 / 1M input tokens).",
+    examples: ["Gemini 3.8 Flash", "Gemini 3.5 Flash", "Sonnet"],
     icon: "RotateCw",
     colorScheme: {
       badgeBg: "bg-amber-100 text-amber-800",
@@ -48,7 +48,7 @@ export const MODEL_CATEGORIES: ModelCategory[] = [
     name: "Scale",
     subtitle: "High-Throughput Automation",
     description: "High-volume automation for mass-scaling foundational agentic tasks with ultra-fast latency.",
-    examples: ["Gemini Flash-Lite", "Haiku"],
+    examples: ["Gemini 3.5 Flash-Lite", "Haiku"],
     icon: "SquareArrowOutUpRight",
     colorScheme: {
       badgeBg: "bg-sky-100 text-sky-800",
@@ -62,7 +62,7 @@ export const MODEL_CATEGORIES: ModelCategory[] = [
     name: "Open Weights",
     subtitle: "Custom & Regulated Control",
     description: "For controlled innovation and self-hosted customization in highly regulated industries.",
-    examples: ["Gemma", "GLM", "Kimi"],
+    examples: ["Gemma 3", "Gemma 2", "GLM", "Kimi"],
     icon: "Dumbbell",
     colorScheme: {
       badgeBg: "bg-lime-100 text-lime-800",
@@ -73,16 +73,83 @@ export const MODEL_CATEGORIES: ModelCategory[] = [
   }
 ];
 
+export const STRATEGY_TRIANGLE_PILLARS = {
+  capability: {
+    id: "capability",
+    label: "Raw Capability",
+    shortTag: "Maximum Intellect & Deep Reasoning",
+    categoryMatch: "Frontier (Gemini 3.1 Pro) & Workhorse (Gemini 3.8 Flash)",
+    recommendedModels: ["Gemini 3.1 Pro", "Gemini 3.8 Flash"],
+    pricingHighlight: "Gemini 3.8 Flash: $0.75 / 1M input · $3.75 / 1M output | Gemini 3.1 Pro: $2.00 / 1M input · $12.00 / 1M output",
+    headline: "When Multi-Step Accuracy & Deep Reasoning Matter Most",
+    description: "Prioritize Raw Capability when your architecture tackles long-horizon autonomous coding, quantitative financial modeling, legal diligence, or complex tool orchestration. Gemini 3.8 Flash delivers near-frontier performance (90.8% Terminal-bench 2.1 SOTA, 73.7% DeepSWE v1.1) at workhorse Flash pricing, while Gemini 3.1 Pro handles maximum-depth analytical reasoning.",
+    colorScheme: {
+      accentText: "text-emerald-800",
+      badgeBg: "bg-emerald-100 text-emerald-800 border-emerald-300",
+      cardBorder: "border-emerald-300/90",
+      buttonActive: "bg-emerald-600 text-white shadow-emerald-200"
+    }
+  },
+  latency: {
+    id: "latency",
+    label: "Latency",
+    shortTag: "Sub-Second Speed & High-Volume Scale",
+    categoryMatch: "Scale (Gemini 3.5 Flash-Lite) & Workhorse (Gemini 3.8 Flash)",
+    recommendedModels: ["Gemini 3.5 Flash-Lite", "Gemini 3.8 Flash"],
+    pricingHighlight: "Gemini 3.5 Flash-Lite: $0.30 / 1M input · $2.50 / 1M output | Gemini 3.8 Flash: $0.75 / 1M input · $3.75 / 1M output (50% off w/ Off-Peak PayGo)",
+    headline: "When Real-Time Responsiveness & Unit Economics Drive Your Product",
+    description: "Prioritize Latency when building real-time voice/video agents, interactive developer copilots, and high-throughput routing pipelines. Start routine classifications on Gemini 3.5 Flash-Lite (<200ms TTFT at $0.30/1M input) and route complex interactive turns to Gemini 3.8 Flash ($0.75/1M input)—optimized on Google TPU hardware for industry-leading tokens-per-second.",
+    colorScheme: {
+      accentText: "text-sky-800",
+      badgeBg: "bg-sky-100 text-sky-800 border-sky-300",
+      cardBorder: "border-sky-300/90",
+      buttonActive: "bg-sky-600 text-white shadow-sky-200"
+    }
+  },
+  sovereignty: {
+    id: "sovereignty",
+    label: "Sovereignty",
+    shortTag: "Full Weight Control & Zero Data Egress",
+    categoryMatch: "Open Weights (Gemma 3 / Gemma 2 on Vertex AI & GKE)",
+    recommendedModels: ["Gemma 3", "Gemma 2"],
+    pricingHighlight: "Open Weights (Zero Licensing Cost) — Pay only for GKE / Vertex AI GPU cluster compute (Eligible for up to $250K Startup Credits)",
+    headline: "When Strict Data Residency, Air-Gapped Control & Custom Weights Are Non-Negotiable",
+    description: "Prioritize Sovereignty when operating in regulated healthcare, defense, sovereign cloud, or specialized fintech environments. Deploy open-weight Gemma models directly on your own GKE clusters, Vertex AI dedicated endpoints, or on-premise hardware with custom LoRA fine-tuning and zero external data egress.",
+    colorScheme: {
+      accentText: "text-lime-800",
+      badgeBg: "bg-lime-100 text-lime-800 border-lime-300",
+      cardBorder: "border-lime-300/90",
+      buttonActive: "bg-lime-600 text-white shadow-lime-200"
+    }
+  },
+  balanced: {
+    id: "balanced",
+    label: "The Workhorse Sweet Spot",
+    shortTag: "Near-Frontier Intelligence + Flash Speed",
+    categoryMatch: "Gemini 3.8 Flash (Workhorse Flagship)",
+    recommendedModels: ["Gemini 3.8 Flash"],
+    pricingHighlight: "$0.75 / 1M Input Tokens · $3.75 / 1M Output Tokens (Introductory Pricing through Dec 31, 2026 | $0.375 / $1.875 Off-Peak PayGo)",
+    headline: "Balancing Raw Capability & Low Latency: Meet Gemini 3.8 Flash",
+    description: "Most startups need frontier-grade agentic coding and reasoning without frontier latency or token burn. Gemini 3.8 Flash bridges the triangle—delivering near-frontier intelligence, tunable thinking effort (Low/Medium/High), and agentic video understanding (up to 88% fewer tokens) at just $0.75 per 1M input tokens.",
+    colorScheme: {
+      accentText: "text-amber-800",
+      badgeBg: "bg-amber-100 text-amber-800 border-amber-300",
+      cardBorder: "border-amber-300/90",
+      buttonActive: "bg-amber-500 text-white shadow-amber-200"
+    }
+  }
+};
+
 export const INITIAL_BLOG_UPDATES: BlogUpdate[] = [
   {
     id: "1",
-    title: "Understanding the 4 Google Cloud Model Categories",
-    date: "Latest Release",
-    tag: "AI Architecture",
+    title: "Gemini 3.8 Flash: Near-Frontier Intelligence at $0.75 / 1M Input Tokens",
+    date: "September 2026",
+    tag: "Pricing & Architecture",
     readTime: "3 min read",
-    summary: "Google DeepMind organizes its AI portfolio into Frontier, Workhorse, Scale, and Open Weights so startup teams can easily select and route workloads.",
+    summary: "Gemini 3.8 Flash delivers a major leap in agentic coding and multi-step reasoning while maintaining $0.75/1M input and $3.75/1M output introductory pricing.",
     link: CONNECT_LINKS.gcpBlog,
-    badge: "Essential Strategy"
+    badge: "New Launch"
   },
   {
     id: "2",
@@ -162,9 +229,11 @@ export const MODEL_STRENGTHS_MATRIX = [
     badgeBg: "bg-sky-100 text-sky-800 border-sky-200",
     contextWindow: "1,048,576 tokens",
     outputLimit: "65,536 tokens",
+    pricing: "$0.30 / 1M input · $2.50 / 1M output",
+    pricingSubtext: "50% discount available via Off-Peak PayGo & Batch API",
     strengths: [
-      "High-throughput sub-second response times",
-      "Cost-optimized for massive prompt volume & scale",
+      "High-throughput sub-second response times (350+ output tokens/sec)",
+      "Cost-optimized for massive prompt volume & routine extraction",
       "Native function calling & structured JSON parsing",
       "Multimodal (Text, Code, Audio, Images, Video)"
     ],
@@ -172,19 +241,21 @@ export const MODEL_STRENGTHS_MATRIX = [
     link: CONNECT_LINKS.modelStrengthsMigrate
   },
   {
-    name: "Gemini 3.5 Flash / 3.7 Flash",
+    name: "Gemini 3.8 Flash",
     category: "Workhorse",
-    badge: "Balanced Speed & Coding",
-    badgeBg: "bg-amber-100 text-amber-800 border-amber-200",
+    badge: "Flagship Workhorse · $0.75 / 1M In",
+    badgeBg: "bg-amber-100 text-amber-800 border-amber-300",
     contextWindow: "1,048,576 tokens",
     outputLimit: "65,536 tokens",
+    pricing: "$0.75 / 1M input · $3.75 / 1M output",
+    pricingSubtext: "Intro pricing thru Dec 31, 2026 ($1.50/$7.50 standard Jan 2027) · $0.375/$1.875 Off-Peak PayGo",
     strengths: [
-      "State-of-the-art code generation and UI layout synthesis",
-      "Strong multi-step logical reasoning & debugging",
-      "Grounding with Google Search & implicit context caching",
-      "High token-per-second streaming throughput"
+      "Near-frontier coding & agentic execution (90.8% Terminal-bench 2.1 SOTA, 73.7% DeepSWE v1.1)",
+      "Agentic video understanding using up to 88% fewer tokens with higher accuracy",
+      "Tunable thinking effort (Low, Medium, High) to control latency & token spend",
+      "Dramatic reduction in code/fact fabrication & autonomous multi-step tool loops"
     ],
-    bestFor: "Developer copilots, full-stack software synthesis, interactive chatbots, multimodal analysis",
+    bestFor: "Autonomous software engineering agents, complex full-stack synthesis, multimodal video/financial workflows",
     link: CONNECT_LINKS.modelStrengthsMigrate
   },
   {
@@ -194,6 +265,8 @@ export const MODEL_STRENGTHS_MATRIX = [
     badgeBg: "bg-emerald-100 text-emerald-800 border-emerald-200",
     contextWindow: "1,048,576+ tokens",
     outputLimit: "65,536 tokens",
+    pricing: "$2.00 / 1M input · $12.00 / 1M output",
+    pricingSubtext: "For prompts ≤200K tokens ($4.00 / $18.00 per 1M for >200K tokens)",
     strengths: [
       "Deep multi-document legal & financial synthesis",
       "Complex mathematical, scientific, and strategic reasoning",
@@ -204,12 +277,14 @@ export const MODEL_STRENGTHS_MATRIX = [
     link: CONNECT_LINKS.modelStrengthsMigrate
   },
   {
-    name: "Gemma 2 / Gemma 3",
+    name: "Gemma 3 / Gemma 2",
     category: "Open Weights",
     badge: "Sovereignty & Self-Hosted",
     badgeBg: "bg-lime-100 text-lime-800 border-lime-200",
-    contextWindow: "8k - 32k+ tokens",
+    contextWindow: "8k - 128k+ tokens",
     outputLimit: "Configurable",
+    pricing: "Open Weights ($0 Licensing Fee)",
+    pricingSubtext: "Billed purely on Vertex AI / GKE GPU infrastructure consumption",
     strengths: [
       "Deploy anywhere (Vertex AI, GKE, on-prem, local edge)",
       "Zero data egress & strict data residency compliance",
@@ -250,8 +325,8 @@ export const GOVERNANCE_RESOURCES = [
     badge: "Next Key Date: Oct 20, 2026",
     badgeBg: "bg-rose-100 text-rose-800 border-rose-200 font-extrabold",
     icon: "CalendarClock",
-    keyHighlights: ["Key Sunset Deadline: October 20, 2026", "Migration to Gemini 3.5 Flash & Flash-Lite", "Zero-downtime endpoint transitions"],
-    description: "Track official Gemini model deprecation timelines. Plan seamless zero-downtime migrations from legacy endpoints to Gemini 3.5 ahead of the October 20, 2026 milestone.",
+    keyHighlights: ["Key Sunset Deadline: October 20, 2026 (Gemini 2.5 series)", "Migrate to Gemini 3.8 Flash & 3.5 Flash-Lite", "Zero-downtime endpoint transitions"],
+    description: "Track official Gemini model deprecation timelines. Plan seamless zero-downtime migrations from legacy Gemini 2.5 endpoints to Gemini 3.8 Flash ahead of the October 20, 2026 milestone.",
     link: CONNECT_LINKS.modelDeprecations,
     ctaText: "View Deprecation Schedule"
   }
@@ -259,16 +334,30 @@ export const GOVERNANCE_RESOURCES = [
 
 export const MODEL_FEATURE_COMPARISON_TABLE = [
   {
+    feature: "Token Pricing (Per 1M Tokens)",
+    flashLite: "$0.30 Input / $2.50 Output",
+    flash: "$0.75 Input / $3.75 Output (Intro thru Dec 31, 2026)",
+    pro: "$2.00 Input / $12.00 Output (≤200K)",
+    gemma: "$0 Licensing (Compute / GPU Only)"
+  },
+  {
+    feature: "Off-Peak PayGo / Batch Discount (50% Off)",
+    flashLite: "$0.15 Input / $1.25 Output",
+    flash: "$0.375 Input / $1.875 Output",
+    pro: "$1.00 Input / $6.00 Output (Batch)",
+    gemma: "Spot / Preemptible GPU Pricing"
+  },
+  {
     feature: "Launch Stage",
     flashLite: "GA (Generally Available)",
-    flash: "GA (Generally Available)",
+    flash: "GA (Gemini 3.8 Flash - Sep 2026)",
     pro: "GA & Preview (3.1)",
     gemma: "GA (Open Weights)"
   },
   {
     feature: "Input Modalities",
     flashLite: "Text, Code, Audio, Images, Video, PDF",
-    flash: "Text, Code, Audio, Images, Video, PDF",
+    flash: "Text, Code, Audio, Images, Agentic Video (88% fewer tokens), PDF",
     pro: "Text, Code, Audio, Images, Video, PDF",
     gemma: "Text & Multimodal Vision"
   },
@@ -277,7 +366,7 @@ export const MODEL_FEATURE_COMPARISON_TABLE = [
     flashLite: "1,048,576 tokens (~1M)",
     flash: "1,048,576 tokens (~1M)",
     pro: "1,048,576+ tokens (~1M-2M)",
-    gemma: "8,192 - 32,768+ tokens"
+    gemma: "8,192 - 128,000+ tokens"
   },
   {
     feature: "Max Output Tokens",
@@ -296,29 +385,23 @@ export const MODEL_FEATURE_COMPARISON_TABLE = [
   {
     feature: "Function Calling & JSON Mode",
     flashLite: "Optimized / High Speed",
-    flash: "Native / High Accuracy",
+    flash: "Iterative Agentic Loops / High Accuracy",
     pro: "Advanced / Multi-Turn",
     gemma: "Supported via Tuning"
   },
   {
-    feature: "Code Execution",
-    flashLite: "Supported",
-    flash: "Supported",
-    pro: "Supported",
+    feature: "Code Execution & Benchmarks",
+    flashLite: "Supported (Fast Scripting)",
+    flash: "Supported (90.8% Terminal-bench 2.1 SOTA)",
+    pro: "Supported (Deep Architecture)",
     gemma: "Self-Hosted Sandbox"
-  },
-  {
-    feature: "Context Caching",
-    flashLite: "Supported",
-    flash: "Supported",
-    pro: "Supported",
-    gemma: "KV Cache / Self-Managed"
   },
   {
     feature: "Throughput Latency Tier",
     flashLite: "Ultra-Low (<200ms TTFT)",
-    flash: "Low Latency (Fast)",
+    flash: "Low Latency + Tunable Thinking (Low/Med/High)",
     pro: "Deep Thinking / Precision",
     gemma: "GPU & Cluster Dependent"
   }
 ];
+
