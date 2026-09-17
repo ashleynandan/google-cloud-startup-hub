@@ -11,7 +11,9 @@ export const CONNECT_LINKS = {
   modelStrengthsMigrate: "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/migrate#which-model",
   safetyFilters: "https://ai.google.dev/gemini-api/docs/safety-settings#safety-filters",
   budgetAlerts: "https://docs.cloud.google.com/billing/docs/how-to/budgets#add-new-budget",
-  modelDeprecations: "https://ai.google.dev/gemini-api/docs/deprecations"
+  modelDeprecations: "https://ai.google.dev/gemini-api/docs/deprecations",
+  openModelsMaas: "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/open-models/use-maas",
+  computeSavingsPlan: "https://docs.cloud.google.com/docs/cuds-flexible-savings-plans#fsp_purchase"
 };
 
 export const MODEL_CATEGORIES: ModelCategory[] = [
@@ -61,8 +63,8 @@ export const MODEL_CATEGORIES: ModelCategory[] = [
     id: "openweight",
     name: "Open Weights",
     subtitle: "Custom & Regulated Control",
-    description: "For controlled innovation and self-hosted customization in highly regulated industries.",
-    examples: ["Gemma 3", "Gemma 2", "GLM", "Kimi"],
+    description: "For controlled innovation, MaaS endpoints, and self-hosted customization in regulated industries—eligible for Compute Savings Plans.",
+    examples: ["Kimi", "Qwen", "Llama", "DeepSeek", "GLM", "Gemma", "MiniMax"],
     icon: "Dumbbell",
     colorScheme: {
       badgeBg: "bg-lime-100 text-lime-800",
@@ -109,12 +111,12 @@ export const STRATEGY_TRIANGLE_PILLARS = {
   sovereignty: {
     id: "sovereignty",
     label: "Sovereignty",
-    shortTag: "Full Weight Control & Zero Data Egress",
-    categoryMatch: "Open Weights (Gemma 3 / Gemma 2 on Vertex AI & GKE)",
-    recommendedModels: ["Gemma 3", "Gemma 2"],
-    pricingHighlight: "Open Weights (Zero Licensing Cost) — Pay only for GKE / Vertex AI GPU cluster compute (Eligible for up to $250K Startup Credits)",
-    headline: "When Strict Data Residency, Air-Gapped Control & Custom Weights Are Non-Negotiable",
-    description: "Prioritize Sovereignty when operating in regulated healthcare, defense, sovereign cloud, or specialized fintech environments. Deploy open-weight Gemma models directly on your own GKE clusters, Vertex AI dedicated endpoints, or on-premise hardware with custom LoRA fine-tuning and zero external data egress.",
+    shortTag: "Open Models (MaaS / Self-Hosted) + Compute Savings Plan",
+    categoryMatch: "Open Weights (Kimi, Qwen, Llama, DeepSeek, GLM, Gemma, MiniMax)",
+    recommendedModels: ["Kimi", "Qwen", "Llama", "DeepSeek", "GLM", "Gemma", "MiniMax"],
+    pricingHighlight: "Compute Savings Plan (Flexible CUDs) for Open Models on GCP (MaaS & Self-Hosted GPU/TPU clusters)",
+    headline: "When Open Model Sovereignty & Compute Savings Plans Matter Most",
+    description: "Prioritize Sovereignty when deploying open-weight models—including Kimi, Qwen, Llama, DeepSeek, GLM, Gemma, and MiniMax—via Google Cloud Model-as-a-Service (MaaS), Vertex AI, or GKE. Pair open models with a Google Cloud Compute Savings Plan (Flexible CUDs) to lock in deep committed discounts while preserving model portability and strict data control.",
     colorScheme: {
       accentText: "text-lime-800",
       badgeBg: "bg-lime-100 text-lime-800 border-lime-300",

@@ -462,32 +462,69 @@ export const SectionGcpUpdates: React.FC = () => {
                 </div>
               </div>
 
-              {/* Gemini 3.8 Flash Quick Pricing Card inside Triangle Panel */}
-              <div className="rounded-2xl bg-gradient-to-r from-amber-50/90 via-white to-sky-50/80 border border-amber-200/90 p-4 mb-5">
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-900 flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-                    Gemini 3.8 Flash Pricing Spotlight
-                  </span>
-                  <span className="text-[10px] font-bold bg-amber-200/80 text-amber-950 px-2 py-0.5 rounded-full">
-                    Intro Rate thru Dec 31, 2026
-                  </span>
+              {/* Dynamic Spotlight Card: Gemini 3.8 Flash Pricing OR Open Models Compute Savings Plan */}
+              {selectedTriangleVertex === 'sovereignty' ? (
+                <div className="rounded-2xl bg-gradient-to-r from-lime-50/95 via-white to-emerald-50/80 border border-lime-300/90 p-4 mb-5">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-lime-900 flex items-center gap-1.5">
+                      <Dumbbell className="w-3.5 h-3.5 text-lime-700" />
+                      Compute Savings Plan for Open Models
+                    </span>
+                    <span className="text-[10px] font-bold bg-lime-200/80 text-lime-950 px-2 py-0.5 rounded-full">
+                      MaaS &amp; Flexible CUDs
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-700 font-medium mb-2.5">
+                    Run <strong>Kimi, Qwen, Llama, DeepSeek, GLM, Gemma, and MiniMax</strong> on GCP and lower inference/compute spend with Flexible Compute Savings Plans:
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <a
+                      href={CONNECT_LINKS.openModelsMaas}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-2 rounded-xl text-[11px] font-bold text-lime-950 bg-white hover:bg-lime-50 border border-lime-300/90 flex items-center justify-between gap-1.5 shadow-2xs transition-all cursor-pointer"
+                    >
+                      <span>How to Use Open Models on GCP</span>
+                      <ExternalLink className="w-3.5 h-3.5 text-lime-700 shrink-0" />
+                    </a>
+                    <a
+                      href={CONNECT_LINKS.computeSavingsPlan}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-2 rounded-xl text-[11px] font-bold text-emerald-950 bg-white hover:bg-emerald-50 border border-emerald-300/90 flex items-center justify-between gap-1.5 shadow-2xs transition-all cursor-pointer"
+                    >
+                      <span>How to Provision Savings Plan</span>
+                      <ExternalLink className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                    </a>
+                  </div>
                 </div>
-                <div className="grid grid-cols-3 gap-2 text-center mt-2">
-                  <div className="bg-white/90 rounded-xl p-2 border border-amber-200/60">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase block">Input / 1M</span>
-                    <span className="font-heading font-extrabold text-sm sm:text-base text-slate-900">$0.75</span>
+              ) : (
+                <div className="rounded-2xl bg-gradient-to-r from-amber-50/90 via-white to-sky-50/80 border border-amber-200/90 p-4 mb-5">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-900 flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+                      Gemini 3.8 Flash Pricing Spotlight
+                    </span>
+                    <span className="text-[10px] font-bold bg-amber-200/80 text-amber-950 px-2 py-0.5 rounded-full">
+                      Intro Rate thru Dec 31, 2026
+                    </span>
                   </div>
-                  <div className="bg-white/90 rounded-xl p-2 border border-amber-200/60">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase block">Output / 1M</span>
-                    <span className="font-heading font-extrabold text-sm sm:text-base text-slate-900">$3.75</span>
-                  </div>
-                  <div className="bg-white/90 rounded-xl p-2 border border-sky-200/60">
-                    <span className="text-[10px] font-bold text-sky-700 uppercase block">Off-Peak (50% Off)</span>
-                    <span className="font-heading font-extrabold text-xs sm:text-sm text-sky-900">$0.375 / $1.875</span>
+                  <div className="grid grid-cols-3 gap-2 text-center mt-2">
+                    <div className="bg-white/90 rounded-xl p-2 border border-amber-200/60">
+                      <span className="text-[10px] font-bold text-slate-400 uppercase block">Input / 1M</span>
+                      <span className="font-heading font-extrabold text-sm sm:text-base text-slate-900">$0.75</span>
+                    </div>
+                    <div className="bg-white/90 rounded-xl p-2 border border-amber-200/60">
+                      <span className="text-[10px] font-bold text-slate-400 uppercase block">Output / 1M</span>
+                      <span className="font-heading font-extrabold text-sm sm:text-base text-slate-900">$3.75</span>
+                    </div>
+                    <div className="bg-white/90 rounded-xl p-2 border border-sky-200/60">
+                      <span className="text-[10px] font-bold text-sky-700 uppercase block">Off-Peak (50% Off)</span>
+                      <span className="font-heading font-extrabold text-xs sm:text-sm text-sky-900">$0.375 / $1.875</span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
                 <a
@@ -566,171 +603,69 @@ export const SectionGcpUpdates: React.FC = () => {
         ))}
       </div>
 
-      {/* Gemini Models & Key Strengths Architecture Matrix Chart */}
-      <div className="glass-card rounded-[32px] p-6 sm:p-10 mb-12 border-2 border-sky-200/90 bg-gradient-to-br from-white via-sky-50/40 to-white shadow-lg relative overflow-hidden">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-bold text-sky-700 uppercase tracking-wider">
-              <TableProperties className="w-4 h-4 text-sky-600" />
-              <span>Official Architecture & Pricing Matrix</span>
+      {/* NEW: Compute Savings Plan for Open Models on GCP */}
+      <div className="glass-card rounded-[32px] p-6 sm:p-10 mb-12 border-2 border-lime-300/90 bg-gradient-to-br from-white via-lime-50/40 to-emerald-50/30 shadow-lg relative overflow-hidden">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+          <div className="flex-1">
+            <div className="flex flex-wrap items-center gap-2 mb-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-lime-100 text-lime-900 border border-lime-300 text-xs font-extrabold uppercase tracking-wider">
+                <Dumbbell className="w-3.5 h-3.5 text-lime-700" />
+                Open Models &amp; Cost Optimization
+              </span>
+              <span className="text-xs font-bold text-emerald-800 bg-emerald-100/80 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                Flexible CUDs &amp; Model-as-a-Service (MaaS)
+              </span>
             </div>
-            <h3 className="font-heading text-2xl sm:text-3xl font-bold text-slate-800 mt-1">
-              Gemini 3.8 & Portfolio Pricing / Strengths
+
+            <h3 className="font-heading text-2xl sm:text-3xl font-bold text-slate-900 mt-1">
+              Compute Savings Plan for Open Models on GCP
             </h3>
-            <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-2xl">
-              Compare token pricing (including Gemini 3.8 Flash at $0.75/1M input &amp; $3.75/1M output), context capacities, and architectural strengths across Google DeepMind&apos;s flagship models.
+
+            <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed max-w-3xl">
+              Deploy and scale leading open-weight and third-party models on Google Cloud—either via managed <strong>Model-as-a-Service (MaaS)</strong> endpoints in Vertex AI or self-hosted GPU/TPU clusters—and pair them with a <strong>Google Cloud Compute Savings Plan (Flexible CUDs)</strong> to significantly reduce committed compute spend.
             </p>
+
+            {/* Supported Open Models Pills */}
+            <div className="mt-4 pt-4 border-t border-lime-200/70">
+              <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-500 block mb-2">
+                Supported Open Models Ecosystem
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {['Kimi', 'Qwen', 'Llama', 'DeepSeek', 'GLM', 'Gemma', 'MiniMax'].map((openModel) => (
+                  <span
+                    key={openModel}
+                    className="px-3 py-1.5 rounded-xl bg-white/95 border border-lime-300/90 text-slate-800 text-xs font-extrabold shadow-2xs flex items-center gap-1.5"
+                  >
+                    <CheckCircle2 className="w-3.5 h-3.5 text-lime-600 shrink-0" />
+                    {openModel}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
 
-          <div className="flex items-center gap-3 self-stretch sm:self-auto justify-between sm:justify-end">
-            {/* View Mode Toggle */}
-            <div className="bg-slate-100 p-1 rounded-xl flex items-center gap-1 border border-slate-200/80">
-              <button
-                onClick={() => setMatrixViewMode('cards')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                  matrixViewMode === 'cards'
-                    ? 'bg-white text-slate-900 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                Card View
-              </button>
-              <button
-                onClick={() => setMatrixViewMode('table')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                  matrixViewMode === 'table'
-                    ? 'bg-white text-slate-900 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                Full Spec &amp; Pricing Table
-              </button>
-            </div>
-
-            <a 
-              href={CONNECT_LINKS.modelStrengthsMigrate}
+          {/* Action Links Column */}
+          <div className="w-full lg:w-auto flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+            <a
+              href={CONNECT_LINKS.openModelsMaas}
               target="_blank"
               rel="noopener noreferrer"
-              className="shrink-0 px-4 py-2 rounded-xl text-xs font-bold text-sky-900 bg-sky-100/90 hover:bg-sky-200 border border-sky-300/80 shadow-xs flex items-center gap-1.5 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+              className="px-5 py-3.5 rounded-2xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-emerald-600 to-lime-600 hover:from-emerald-500 hover:to-lime-500 shadow-md shadow-lime-500/20 flex items-center justify-between gap-3 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
             >
-              <span>Official Docs</span>
-              <ExternalLink className="w-3.5 h-3.5 text-sky-700" />
+              <span>How to Use Open Models on GCP</span>
+              <ExternalLink className="w-4 h-4 shrink-0" />
+            </a>
+
+            <a
+              href={CONNECT_LINKS.computeSavingsPlan}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-3.5 rounded-2xl text-xs sm:text-sm font-bold text-slate-900 bg-white hover:bg-lime-50 border-2 border-lime-300/90 shadow-xs flex items-center justify-between gap-3 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+            >
+              <span>How to Provision Savings Plan</span>
+              <ExternalLink className="w-4 h-4 text-lime-700 shrink-0" />
             </a>
           </div>
-        </div>
-
-        {/* View Mode 1: Cards */}
-        {matrixViewMode === 'cards' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
-            {MODEL_STRENGTHS_MATRIX.map((model, idx) => (
-              <div 
-                key={idx} 
-                className="bg-white/95 rounded-[24px] p-6 border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="font-heading font-bold text-lg text-slate-900 group-hover:text-sky-700 transition-colors">
-                      {model.name}
-                    </span>
-                    <span className={`text-[11px] font-bold px-3 py-1 rounded-full border ${model.badgeBg}`}>
-                      {model.badge}
-                    </span>
-                  </div>
-
-                  {/* Token Pricing Callout Banner */}
-                  {model.pricing && (
-                    <div className="mb-3 p-3 rounded-xl bg-gradient-to-r from-amber-50/80 via-sky-50/60 to-white border border-amber-200/80">
-                      <div className="flex items-center justify-between gap-2">
-                        <span className="text-[10px] uppercase font-extrabold text-amber-900 tracking-wider flex items-center gap-1">
-                          <DollarSign className="w-3 h-3 text-amber-600" />
-                          Token Pricing
-                        </span>
-                        <span className="text-xs font-extrabold text-slate-900">{model.pricing}</span>
-                      </div>
-                      {model.pricingSubtext && (
-                        <span className="block text-[10px] font-medium text-slate-500 mt-0.5">
-                          {model.pricingSubtext}
-                        </span>
-                      )}
-                    </div>
-                  )}
-
-                  <div className="grid grid-cols-2 gap-2 mb-4 p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs">
-                    <div>
-                      <span className="text-[10px] uppercase font-bold text-slate-400 block">Context Window</span>
-                      <span className="font-semibold text-slate-800">{model.contextWindow}</span>
-                    </div>
-                    <div>
-                      <span className="text-[10px] uppercase font-bold text-slate-400 block">Output Token Limit</span>
-                      <span className="font-semibold text-slate-800">{model.outputLimit}</span>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2 mb-4">
-                    <span className="text-[10px] uppercase font-bold text-slate-400 block">Core Strengths</span>
-                    {model.strengths.map((str, i) => (
-                      <div key={i} className="flex items-start gap-2 text-xs text-slate-700">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                        <span>{str}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="pt-3 border-t border-slate-100">
-                  <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">Optimal Use Case</span>
-                  <p className="text-xs text-slate-600 font-medium">
-                    {model.bestFor}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* View Mode 2: Full Spec Table */}
-        {matrixViewMode === 'table' && (
-          <div className="overflow-x-auto rounded-2xl border border-slate-200/90 shadow-xs mb-6 bg-white">
-            <table className="w-full text-left text-xs border-collapse">
-              <thead>
-                <tr className="bg-sky-50/90 text-slate-800 border-b border-slate-200">
-                  <th className="p-4 font-bold uppercase text-[11px] tracking-wider">Feature / Capability</th>
-                  <th className="p-4 font-bold text-sky-900">Gemini 3.5 Flash-Lite</th>
-                  <th className="p-4 font-bold text-amber-900">Gemini 3.8 Flash</th>
-                  <th className="p-4 font-bold text-emerald-900">Gemini 3.1 / 2.5 Pro</th>
-                  <th className="p-4 font-bold text-lime-900">Gemma 3 / 2</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 text-slate-700">
-                {MODEL_FEATURE_COMPARISON_TABLE.map((row, idx) => (
-                  <tr key={idx} className={idx % 2 === 0 ? 'bg-white hover:bg-slate-50/80' : 'bg-slate-50/50 hover:bg-slate-50'}>
-                    <td className="p-4 font-bold text-slate-900">{row.feature}</td>
-                    <td className="p-4 font-medium">{row.flashLite}</td>
-                    <td className="p-4 font-semibold text-amber-950 bg-amber-50/30">{row.flash}</td>
-                    <td className="p-4 font-medium">{row.pro}</td>
-                    <td className="p-4 font-medium">{row.gemma}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-
-        {/* Footnote with link */}
-        <div className="p-4 rounded-2xl bg-sky-50/80 border border-sky-200/70 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-700">
-          <div className="flex items-center gap-2">
-            <Zap className="w-4 h-4 text-sky-600 shrink-0" />
-            <span>Need assistance selecting the right model or migrating existing prompts?</span>
-          </div>
-          <a
-            href={CONNECT_LINKS.meetAshley}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-bold text-sky-800 hover:text-sky-950 flex items-center gap-1 shrink-0"
-          >
-            <span>Review with Ashley</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
         </div>
       </div>
 
