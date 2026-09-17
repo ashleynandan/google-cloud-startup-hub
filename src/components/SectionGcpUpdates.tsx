@@ -566,26 +566,6 @@ export const SectionGcpUpdates: React.FC = () => {
         ))}
       </div>
 
-      {/* Engineering Recommendation Box */}
-      <div className="glass-card rounded-[28px] p-6 sm:p-8 bg-gradient-to-r from-sky-50 via-white to-amber-50/70 border border-sky-200/90 shadow-md mb-12 relative overflow-hidden">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-sky-500 text-white flex items-center justify-center shrink-0 shadow-md shadow-sky-200">
-            <Zap className="w-7 h-7" />
-          </div>
-          <div className="flex-1">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="text-xs font-extrabold uppercase tracking-wider text-sky-800 bg-sky-200/80 px-2.5 py-0.5 rounded-full">
-                Engineering & TCO Recommendation
-              </span>
-              <span className="text-xs text-slate-500">Google Cloud Architecture Team</span>
-            </div>
-            <p className="text-sm sm:text-base text-slate-800 font-semibold leading-relaxed">
-              Start high-volume tasks with <strong className="text-sky-700 font-bold">Gemini 3.5 Flash-Lite &apos;Scale&apos; ($0.30/1M in)</strong>, and dynamically route to <strong className="text-amber-800 font-bold">Gemini 3.8 Flash &apos;Workhorse&apos; ($0.75/1M input · $3.75/1M output)</strong> when near-frontier agentic coding, multi-step reasoning, or video understanding is required.
-            </p>
-          </div>
-        </div>
-      </div>
-
       {/* Interactive Model Routing Helper */}
       <div className="glass-card rounded-[28px] p-6 sm:p-8 mb-12 border border-white/90">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
